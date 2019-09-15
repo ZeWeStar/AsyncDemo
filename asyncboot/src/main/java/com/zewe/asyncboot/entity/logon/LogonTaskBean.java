@@ -1,0 +1,31 @@
+package com.zewe.asyncboot.entity.logon;
+
+import com.alibaba.fastjson.JSONObject;
+import com.zewe.asyncboot.entity.TaskBean;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ * @Author: ZeWe
+ * @Date: 2019/9/15 11:25
+ */
+public class LogonTaskBean extends TaskBean {
+    @Override
+    public void action() {
+        try {
+            Thread.sleep(30L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public String toJson() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{");
+        stringBuilder.append("\"code\":0,\"message\":\"登录成功\",\"responseTime\":\""+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())+"\"");
+        stringBuilder.append("}");
+        return stringBuilder.toString();
+    }
+}
